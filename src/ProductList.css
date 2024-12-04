@@ -85,7 +85,10 @@ body {
     font-weight: bold;
     margin-bottom: 10px;
 }
-
+.category_name {
+    margin: auto;
+    text-align: center;
+}
 .product-price {
     color: #e74c3c;
     font-size: 1.2rem;
