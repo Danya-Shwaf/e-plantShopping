@@ -261,8 +261,9 @@ const handlePlantsClick = (e) => {
 };
 
 const handleContinueShopping = (e) => {
-e.preventDefault();
-setShowCart(false);
+    e.preventDefault();
+    setShowCart(false);
+    setShowPlants(true);
 };
     return (
     <div>
@@ -315,7 +316,7 @@ setShowCart(false);
         </div>
         </div>
     </div>
-    {!showCart ? (
+    {!showCart || showPlants ? (
     <div className="product-grid">
     {plantsArray.map((category, index) => (
         <div key={index}>
@@ -332,7 +333,7 @@ setShowCart(false);
                 />
                 <div className="product-title">{plant.name}</div>
                 <div >{plant.description}</div>
-                <div className="product-price">{plant.price}</div>
+                <div className="product-price">{plant.cost}</div>
 <button 
     className='product-button' 
     onClick={() => handleAddToCart(plant)}

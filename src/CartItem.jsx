@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 import { useSelector, useDispatch } from 'react-redux';
 import { removeItem, updateQuantity } from './CartSlice';
 import './CartItem.css';
 import './ProductList.jsx';
 
 const CartItem = ({ onContinueShopping ,setAddedToCart }) => {
-  const cart = useSelector(state => state.cart.items);
+  /**/const cart = useSelector(state => state.cart.items);
   const dispatch = useDispatch();
 
   // Calculate total amount for all products in the cart
@@ -30,11 +31,17 @@ const CartItem = ({ onContinueShopping ,setAddedToCart }) => {
 
   const handleDecrement = (item) => {
     const updatedQuantity = item.quantity - 1;
-    const price = parseFloat(item.cost.replace("$", ""));
-    const newTotal = price * updatedQuantity;
-    dispatch(
-      updateQuantity({ ...item, quantity: updatedQuantity, cost: newTotal })
-    );
+    if(updatedQuantity == 0 ) {
+      dispatch(
+        removeItem(item)
+      );
+    }else {
+      const price = parseFloat(item.cost.replace("$", ""));
+      const newTotal = price * updatedQuantity;
+      dispatch(
+        updateQuantity({ ...item, quantity: updatedQuantity, cost: newTotal })
+      );
+    }
   };
 
   const handleRemove = (item) => {
