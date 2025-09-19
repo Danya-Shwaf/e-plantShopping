@@ -26,7 +26,7 @@ function App() {
               Get Started
             </button>
         </div>
-          <div className="aboutus_container">
+          <div className="about_us_container">
           <AboutUs/>
           </div>
           </div>
